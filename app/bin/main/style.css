@@ -1,0 +1,82 @@
+/*
+    Document   : style.css
+*/
+
+.menubar {
+    -fx-font-size: 16pt;
+    -fx-font-family: "Roboto";
+    -fx-background: rgb(0, 0, 0);
+    -fx-base: rgb(255, 255, 255);
+}
+
+.root {
+    -fx-font-size: 16pt;
+    -fx-font-family: "Courier New";
+    -fx-background: rgb(225, 228, 203);
+    -fx-base: rgb(132, 145, 47);
+}
+
+.button {
+    -fx-border-color: rgb(49, 89, 23);
+    -fx-border-radius: 5;
+    -fx-padding: 3 6 6 6;
+    -fx-text-fill: rgb(49, 89, 23);
+}
+
+.borders {
+    -fx-border-color: rgb(103, 100, 78);
+    -fx-border-style: dotted;
+    -fx-border-width: 1.5;
+    -fx-border-insets: -5;
+}
+
+.grid-pane {
+    -fx-padding: 5;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-hgap: 1; /* Horizontal gap between cells */
+    -fx-vgap: 1; /* Vertical gap between cells */
+}
+
+.grid-pane .text-field {
+    -fx-font-size: 40;
+    -fx-font-family: "Courier New";
+    -fx-max-width: 80;
+    -fx-max-height: 80;
+    -fx-min-width: 80;
+    -fx-min-height: 80;
+    -fx-border-color: lightgray; /* Default light borders for all cells */
+    -fx-border-width: 0.5; /* Thinner borders within subgrids */
+}
+
+.text-field-selected {
+    -fx-background-color: rgb(147, 155, 221);
+}
+
+.text-field-highlight {
+    -fx-background-color: rgb(238, 148, 148);
+}
+
+.grid-pane .right-border {
+    -fx-border-color: black;
+    -fx-border-width: 0 2 0 0;
+}
+
+.grid-pane .bottom-border {
+    -fx-border-color: black; 
+    -fx-border-width: 0 0 2 0;
+}
+
+.grid-pane .bottom-right-border {
+    -fx-border-color: black; 
+    -fx-border-width: 0 2 2 0;
+}
+
+/* New styles for valid and invalid entries */
+.text-field-valid {
+    -fx-background-color: lightgreen;
+}
+
+.text-field-invalid {
+    -fx-background-color: lightcoral;
+}
