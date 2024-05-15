@@ -13,3 +13,7 @@ The timer will start when the application starts and will display the elapsed ti
 ## Color Coding Feature:
 Cells with valid entries will be colored green, while invalid entries will be colored red.
 This will provide immediate visual feedback to the user about the correctness of their input.
+## Auto Solver:
+Auto Solver Method using backtracking algorithm.
+## Statistics
+Track and display statistics such as the number of puzzles solved, average time per puzzle, etc.
