@@ -130,6 +130,26 @@ public class Board {
         return possibleValues;
     }
 
+    public boolean solve() {
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
+                if (board[row][col] == 0) {
+                    for (int num = 1; num <= 9; num++) {
+                        if (isLegal(row, col, num)) {
+                            board[row][col] = num;
+                            if (solve()) {
+                                return true;
+                            }
+                            board[row][col] = 0; // backtrack
+                        }
+                    }
+                    return false; // trigger backtracking
+                }
+            }
+        }
+        return true; // solved
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
