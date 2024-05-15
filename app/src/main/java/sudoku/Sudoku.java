@@ -36,6 +36,11 @@ public class Sudoku extends Application {
     private Label timerLabel;
     private int secondsElapsed;
 
+    // Statistics fields
+    private int puzzlesSolved = 0;
+    private int totalSolvingTime = 0; // in seconds
+    private int hintsUsed = 0;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         root = new VBox();
@@ -293,6 +298,7 @@ public class Sudoku extends Application {
 
         addMenuItem(hintMenu, "Show hint", () -> {
             System.out.println("Show hint");
+            hintsUsed++;
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Hints");
             alert.setHeaderText(null);
@@ -301,6 +307,46 @@ public class Sudoku extends Application {
         });
 
         menuBar.getMenus().add(hintMenu);
+
+        Menu solveMenu = new Menu("Solve");
+
+        addMenuItem(solveMenu, "Auto Solve", () -> {
+            System.out.println("Auto Solve");
+            if (board.solve()) {
+                updateBoard();
+                puzzlesSolved++;
+                totalSolvingTime += secondsElapsed;
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Puzzle Solved");
+                alert.setHeaderText(null);
+                alert.setContentText("The puzzle was successfully solved!");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("No Solution");
+                alert.setHeaderText(null);
+                alert.setContentText("The puzzle cannot be solved!");
+                alert.showAndWait();
+            }
+        });
+
+        menuBar.getMenus().add(solveMenu);
+
+        Menu statsMenu = new Menu("Statistics");
+
+        addMenuItem(statsMenu, "Show Statistics", () -> {
+            System.out.println("Show Statistics");
+            double averageSolvingTime = puzzlesSolved == 0 ? 0 : (double) totalSolvingTime / puzzlesSolved;
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Statistics");
+            alert.setHeaderText(null);
+            alert.setContentText(String.format(
+                "Puzzles Solved: %d\nTotal Solving Time: %d seconds\nHints Used: %d\nAverage Solving Time: %.2f seconds",
+                puzzlesSolved, totalSolvingTime, hintsUsed, averageSolvingTime));
+            alert.showAndWait();
+        });
+
+        menuBar.getMenus().add(statsMenu);
 
         return menuBar;
     }
